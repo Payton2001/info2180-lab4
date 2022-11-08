@@ -65,6 +65,21 @@ $superheroes = [
   ], 
 ];
 
+$query = filter_var($_REQUEST["query"], FILTER_SANITIZE_STRING);
+
+if ($query !== ''){
+    foreach ($superheroes as $superhero){
+        if($superhero['name'] == $query || $superhero['alias'] == $query){
+            echo json_encode($superhero, JSON_PRETTY_PRINT);
+        }
+        else{
+
+            echo json_encode('Superhero not found', JSON_PRETTY_PRINT);
+        }
+    }
+}
+
+
 ?>
 
 <ul>
