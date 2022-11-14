@@ -1,38 +1,44 @@
 html {
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-    font-size: 20px;
+    font-size: 16px;
 }
 
 header {
     background-color: #4d8ab5;
-    padding: 15px;
+    color: white;
+    padding: 30px;
+    vertical-align: middle;
+    text-align: center;
+    font-weight: 500;
+    top: 0;
+    width: 99%;
+    text-transform: uppercase;
+    overflow: hidden;
 }
 
 body {
     margin: 0;
-    font-size: 16px;
-}
-
-main {
-    padding-left: 70px;
-    padding-right: 70px;
-}
-
-header .container {
-    display: flex;
+    background-color: #c2c2c2fd;
+    justify-content: center;
     align-items: center;
 }
 
-header h1 {
-    text-align: center;
-    color: white;
+main {
+    width: 800px;
+    margin: 0 auto;
 }
 
-form {
-    display: inline-flex;
-    flex-wrap: wrap;
+#result_section h2{
+    font-weight: 500;
+}
+
+#form-group {
+    align-items: center;
+    display: flex;
+    flex-direction: row;
     justify-content: center;
-    vertical-align: middle;
+    text-align: center;
+    align-items: center;
 
 }
 
@@ -48,12 +54,12 @@ input {
     line-height: 1.5;
     border-radius: .15rem;
     border: none;
-    width: 350px;
+    width: 650px;
 
 }
 
-.btn {
-    background-color: rgb(155, 16, 16);
+.btn{
+    background-color: rgba(255, 0, 0, 0.61);
     color: white;
     box-shadow: 5px;
     display: inline-block;
@@ -69,9 +75,18 @@ input {
     width: 105px;
 
 }
+
+.btn:hover{
+    background-color: #4d8ab5;
+}
 footer {
-    position: absolute;
+    background-color: #4d8ab5;
+    color: white;
+    padding: 3px;
+    vertical-align: middle;
+    text-align: center;
+    font-weight: 300;
+    position: fixed;
     bottom: 0;
-    width: 100%;
-    height: 2.5rem;
+    width: 99%;
 }

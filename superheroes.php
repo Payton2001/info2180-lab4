@@ -62,28 +62,53 @@ $superheroes = [
       "name" => "Wanda Maximoff",
       "alias" => "Scarlett Witch",
       "biography" => "Notably powerful, Wanda Maximoff has fought both against and with the Avengers, attempting to hone her abilities and do what she believes is right to help the world.",
-  ], 
+  ],
 ];
 
-$query = filter_var($_REQUEST["query"], FILTER_SANITIZE_STRING);
-
-if ($query !== ''){
+$data_found = FALSE;
+$hero = FALSE;
+if (isset($_GET['query']) || !empty($_GET['query'])){
+    $query = filter_var($_REQUEST["query"], FILTER_SANITIZE_STRING);
     foreach ($superheroes as $superhero){
         if($superhero['name'] == $query || $superhero['alias'] == $query){
-            echo json_encode($superhero, JSON_PRETTY_PRINT);
+            $name = $superhero['name'];
+            $alias = $superhero['alias'];
+            $biography = $superhero['biography'];
+            $data_found = TRUE;
+            $hero = TRUE;
         }
-        else{
-
-            echo json_encode('Superhero not found', JSON_PRETTY_PRINT);
-        }
+    }
+}
+else{
+    if (!isset($_GET['query'])){
+        $data_found = FALSE;
+        $hero = TRUE;
+    }
+    else{
+        $hero = FALSE;
+        $data_found = FALSE;
     }
 }
 
 
 ?>
 
-<ul>
-<?php foreach ($superheroes as $superhero): ?>
-  <li><?= $superhero['alias']; ?></li>
-<?php endforeach; ?>
-</ul>
+<?php if ($data_found == TRUE && $hero == TRUE): ?>
+    <h3><?= $alias; ?></h3>
+    <h4><?='A.K.A. '.$name; ?></h4>
+    <p><?= $biography; ?></p>
+<?php endif; ?>
+
+<?php if ($data_found == FALSE && $hero == TRUE): ?>
+    <ul>
+    <?php foreach ($superheroes as $superhero): ?>
+        <li><?= $superhero['alias']; ?></li>
+    <?php endforeach; ?>
+    </ul>
+<?php endif; ?>
+
+<?php if ($data_found == FALSE && $hero == FALSE): ?>
+    <h3 style="color:red;"><?= 'SUPERHERO NOT FOUND'; ?></h3>
+<?php endif; ?>
+
+
